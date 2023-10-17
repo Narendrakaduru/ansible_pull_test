@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  become: true
+  tasks:
+    
+    - name: 'Ubuntu : Update repository Index'
+      apt:
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+
+    - name: 'CentOS : Update repository Index'
+      dnf:
+        update_cache: yes
+      when: ansible_distribution == "CentOS"
